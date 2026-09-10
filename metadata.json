@@ -1,0 +1,8 @@
+{
+  "name": "Erca Almost",
+  "description": "Mobile PWA for school bursars to record, track, and manage student school fee payments connected to Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

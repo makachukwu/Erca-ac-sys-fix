@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Fast hardware-accelerated touch momentum scrolling */
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print specific styles for payment receipts and financial reports */
+@media print {
+  /* Suppress all screen-only UI */
+  .no-print,
+  nav,
+  header,
+  aside {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Target printable elements isolation */
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-receipt,
+  #printable-receipt *,
+  #printable-financial-report,
+  #printable-financial-report *,
+  #printable-audit-report,
+  #printable-audit-report * {
+    visibility: visible;
+  }
+
+  #printable-financial-report,
+  #printable-audit-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 16px 24px;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    display: block !important;
+  }
+
+  #printable-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white;
+    color: black;
+    display: block !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm 12mm 10mm;
+  }
+
+  /* Prevent awkward page breaks inside tables and financial cards */
+  .print-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
